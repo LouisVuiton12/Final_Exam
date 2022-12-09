@@ -27,10 +27,12 @@ namespace Final_exam_ver2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            search.Enabled = false;
             btnAdd_Receipt_ID.Enabled = false;
             btnCancel.Enabled = false;
             btnRemove.Enabled = false;
             txtItemID.Select();
+            
             addItemToComboBox();
         }
 
@@ -68,7 +70,7 @@ namespace Final_exam_ver2
         {
             if(gridViewItem.Rows.Count > 1)
             {
-                
+                search.Enabled = true;
                 btnAdd_Receipt_ID.Enabled = true;
                 btnCancel.Enabled = true;
                 btnRemove.Enabled = true;
@@ -117,17 +119,16 @@ namespace Final_exam_ver2
                 if (gridViewItem.Rows.Count > 0)
                 {
                     Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-                    // creating new WorkBook within Excel application  
+                    
                     Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-                    // creating new Excelsheet in workbook  
+                    
                     Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                    // see the excel sheet behind the program  
+                      
                     app.Visible = true;
-                    // get the reference of first sheet. By default its name is Sheet1.  
-                    // store its reference to worksheet  
+                   
                     worksheet = workbook.Sheets["Sheet1"];
                     worksheet = workbook.ActiveSheet;
-                    // changing the name of active sheet  
+                    
                     worksheet.Name = "Creating Goods received note";
 
                     for (int i = 1; i < gridViewItem.Columns.Count + 1; i++)
@@ -263,7 +264,28 @@ namespace Final_exam_ver2
         {
 
         }
+    
+        private void search_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
 
-        
+            gridViewItem.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in gridViewItem.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
+                    {
+                        row.Selected = true;
+                        this.gridViewItem.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
     }
 }

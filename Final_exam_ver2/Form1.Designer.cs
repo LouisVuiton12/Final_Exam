@@ -35,6 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtBenefit = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -55,8 +57,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtItemID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.search = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItem)).BeginInit();
@@ -126,6 +128,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.search);
+            this.groupBox2.Controls.Add(this.txtSearch);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtBenefit);
@@ -145,15 +149,35 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(0, 237);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(860, 566);
+            this.groupBox2.Size = new System.Drawing.Size(860, 585);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Information about items";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label10.Location = new System.Drawing.Point(543, 165);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(154, 16);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "(eg. 10000, 20000, 30000)";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label9.Location = new System.Drawing.Point(543, 95);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 16);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "(eg. 10, 20, 30)";
+            // 
             // txtBenefit
             // 
-            this.txtBenefit.Location = new System.Drawing.Point(546, 207);
+            this.txtBenefit.Location = new System.Drawing.Point(106, 201);
             this.txtBenefit.Name = "txtBenefit";
             this.txtBenefit.Size = new System.Drawing.Size(215, 22);
             this.txtBenefit.TabIndex = 18;
@@ -162,7 +186,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(479, 210);
+            this.label8.Location = new System.Drawing.Point(26, 207);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 16);
             this.label8.TabIndex = 17;
@@ -170,7 +194,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(627, 467);
+            this.btnRemove.Location = new System.Drawing.Point(580, 518);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(117, 38);
             this.btnRemove.TabIndex = 16;
@@ -180,17 +204,17 @@
             // 
             // btnAdd_Receipt_ID
             // 
-            this.btnAdd_Receipt_ID.Location = new System.Drawing.Point(419, 467);
+            this.btnAdd_Receipt_ID.Location = new System.Drawing.Point(391, 518);
             this.btnAdd_Receipt_ID.Name = "btnAdd_Receipt_ID";
             this.btnAdd_Receipt_ID.Size = new System.Drawing.Size(126, 38);
             this.btnAdd_Receipt_ID.TabIndex = 15;
-            this.btnAdd_Receipt_ID.Text = "Add Receipt_ID";
+            this.btnAdd_Receipt_ID.Text = "Add Invoice_ID";
             this.btnAdd_Receipt_ID.UseVisualStyleBackColor = true;
             this.btnAdd_Receipt_ID.Click += new System.EventHandler(this.btnAdd_Receipt_ID_Click);
             // 
             // btnAdd_Item
             // 
-            this.btnAdd_Item.Location = new System.Drawing.Point(106, 467);
+            this.btnAdd_Item.Location = new System.Drawing.Point(106, 518);
             this.btnAdd_Item.Name = "btnAdd_Item";
             this.btnAdd_Item.Size = new System.Drawing.Size(91, 38);
             this.btnAdd_Item.TabIndex = 14;
@@ -201,9 +225,9 @@
             // btnCancel
             // 
             this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancel.Location = new System.Drawing.Point(266, 467);
+            this.btnCancel.Location = new System.Drawing.Point(252, 518);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(80, 38);
+            this.btnCancel.Size = new System.Drawing.Size(88, 38);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -218,7 +242,7 @@
             this.Item_Quantity,
             this.Item_Price,
             this.Benefit});
-            this.gridViewItem.Location = new System.Drawing.Point(106, 262);
+            this.gridViewItem.Location = new System.Drawing.Point(106, 322);
             this.gridViewItem.Name = "gridViewItem";
             this.gridViewItem.ReadOnly = true;
             this.gridViewItem.RowHeadersWidth = 51;
@@ -336,31 +360,30 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Item ID";
             // 
-            // label9
+            // search
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label9.Location = new System.Drawing.Point(543, 95);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 16);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "(eg. 10, 20, 30)";
+            this.search.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.search.BackColor = System.Drawing.Color.Red;
+            this.search.Location = new System.Drawing.Point(677, 282);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(106, 34);
+            this.search.TabIndex = 21;
+            this.search.Text = "Search Item";
+            this.search.UseVisualStyleBackColor = false;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // label10
+            // txtSearch
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label10.Location = new System.Drawing.Point(543, 165);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(154, 16);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "(eg. 10000, 20000, 30000)";
+            this.txtSearch.Location = new System.Drawing.Point(456, 288);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(215, 22);
+            this.txtSearch.TabIndex = 21;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 800);
+            this.ClientSize = new System.Drawing.Size(900, 819);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -408,6 +431,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Benefit;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtSearch;
+        protected internal System.Windows.Forms.Button search;
     }
 }
 
