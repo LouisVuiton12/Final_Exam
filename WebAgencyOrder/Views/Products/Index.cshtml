@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebAgencyOrder.Models.Item>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h2 class="card-title"><b>@item.ItemsName</b></h2>
+                        <p class="card-text">@item.Benefit</p>
+                        <h5>Quantity: @item.ItemsQuantity</h5>
+                        <h4><b>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", item.ItemsPrice) VND</b></h4>
+                        <p>@Html.ActionLink("Add to cart", "OrderNow", "ShoppingCart", new { id = item.ItemsID}, new {@class = "btn btn-primary"})</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

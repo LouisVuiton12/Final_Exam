@@ -22,13 +22,12 @@ CREATE TABLE Agency
 
 CREATE TABLE OrderReceipt
 (
-  OrderID varchar(30) NOT NULL,
+  OrderID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
   TotalOrderPrice float NOT NULL,
   TotalOrderQuantity INT NOT NULL,
   OrderedDate date NOT NULL,
   Status varchar(30) NOT NULL,
   AgentID varchar(30) NOT NULL,
-  PRIMARY KEY (OrderID),
   FOREIGN KEY (AgentID) REFERENCES Agency(AgentID)
 );
 
@@ -43,12 +42,13 @@ CREATE TABLE OrderProducts
 (
   TotalProductQuantity INT NOT NULL,
   TotalProductPrice float NOT NULL,
-  OrderID varchar(30) NOT NULL,
+  OrderID INT NOT NULL,
   ItemsID varchar(30) NOT NULL,
   PRIMARY KEY (OrderID, ItemsID),
   FOREIGN KEY (OrderID) REFERENCES OrderReceipt(OrderID),
   FOREIGN KEY (ItemsID) REFERENCES Items(ItemsID)
 );
+DROP TABLE OrderProducts
 
 CREATE TABLE Goods_Received_Note
 (
@@ -71,7 +71,7 @@ CREATE TABLE ImportedItems
   FOREIGN KEY (Invoice_ID) REFERENCES Goods_Received_Note(Invoice_ID),
   FOREIGN KEY (ItemsID) REFERENCES Items(ItemsID)
 );
-
+--List of manager--
 INSERT INTO Manager (Manager_ID, Name) VALUES ('M01','Nguyen Quoc An');
 
 INSERT INTO Manager (Manager_ID, Name) VALUES ('M02','Nguyen Quoc Khang');
@@ -91,6 +91,24 @@ INSERT INTO Manager (Manager_ID, Name) VALUES ('M08','Peter Parker');
 INSERT INTO Manager (Manager_ID, Name) VALUES ('M09','Le Van Dat');
 
 INSERT INTO Manager (Manager_ID, Name) VALUES ('M10','Truong Tuan Tu');
+
+--List of products--
+INSERT INTO Items VALUES ('I001', 'Mass', 500000, 300, 'Gain Weight');
+INSERT INTO Items VALUES ('I002', 'Whey', 3500000, 200, 'Gain And Lose Weight');
+INSERT INTO Items VALUES ('I003', 'DHC', 80000, 500, 'Provide Vitamin C');
+INSERT INTO Items VALUES ('I004', 'Collagen', 300000, 500, 'Lose Weight');
+INSERT INTO Items VALUES ('I005', 'Natrol Gummies', 350000, 100, 'Sleep Faster');
+INSERT INTO Items VALUES ('I006', 'Vitamin B', 90000, 750, 'Provide Vitamin B');
+INSERT INTO Items VALUES ('I007', 'Vitamin E', 100000, 800, 'Provide Vitamin E')
+
+INSERT INTO Agency VALUES ('A001', 'Big Boss');
+INSERT INTO Agency VALUES ('A002', 'Second Boss');
+INSERT INTO Agency VALUES ('A003', 'Third Boss');
+INSERT INTO Agency VALUES ('A004', 'Fourth Boss');
+INSERT INTO Agency VALUES ('A005', 'Fifth Boss');
+INSERT INTO Agency VALUES ('A006', 'Sixth Boss'); 
+INSERT INTO Agency VALUES ('A007', 'Seventh Boss');
+
 
 DBCC CHECKIDENT (Goods_Received_Note, RESEED, 0)
 

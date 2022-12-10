@@ -13,7 +13,7 @@ namespace Final_exam_ver2
 
         public void CreateConnection()
         {
-            connection = new SqlConnection("Data Source=QUOC-AN\\SQLEXPRESS;Initial Catalog=Functional_Foods;Integrated Security=True");
+            connection = new SqlConnection("Data Source=LAPTOP-4LEHA9O3\\SQLEXPRESS;Initial Catalog=Functional_Foods;Integrated Security=True");
             connection.Open();
         }
     }

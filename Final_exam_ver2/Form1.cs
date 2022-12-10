@@ -148,9 +148,8 @@ namespace Final_exam_ver2
                     worksheet.Cells[2, 6] = invoice_ID;
                     worksheet.Cells[2, 7] = managerID.Text;
 
-                    string currDateTime = DateTime.Now.ToString("dd/MM/yyyy hh/mm/ss");
+                    string currDateTime = DateTime.Now.ToString("dd MM yyyy hh mm ss");
                     string path = System.IO.Path.GetFullPath("Inventory receiving voucher " + currDateTime + ".xlsx");
-                    path = System.IO.Path.GetFullPath(path);
 
                     workbook.SaveAs(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                     app.Visible = true;
