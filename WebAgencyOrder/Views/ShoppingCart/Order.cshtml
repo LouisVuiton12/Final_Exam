@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebAgencyOrder.Models.OrderReceipt>
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+@{
+    var agent = ViewBag.Agencies as IEnumerable<WebAgencyOrder.Models.Agency>;
+}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Total Quantity</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Agent</th>
+            <th scope="col">Status</th>
+            <th scope="col">See detail</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var item in Model)
+            {
+           var agentFirst = agent.FirstOrDefault(e => e.AgentID == item.AgentID);
+           var agentName = agentFirst.AgentName;
+                <tr>
+                    <td>@item.OrderID</td>
+                    <td>@item.TotalOrderQuantity</td>
+                    <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @item.TotalOrderPrice) đ</td>
+                    <td>@item.OrderedDate</td>
+                    <td>@agentName</td>
+                    <td>@item.Status</td>
+                    <td>
+                       <a href="/ShoppingCart/OrderDetail/@item.OrderID"> See </a>
+                    </td>
+
+                </tr>
+            }
+    </tbody>
+</table>
+

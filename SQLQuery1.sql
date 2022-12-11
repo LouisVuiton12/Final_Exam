@@ -135,11 +135,14 @@ BEGIN
 			WHERE ItemsID = @itemsID
 		END
 END;
-create TRIGGER QuantityUpdate ON Payment after INSERT
+
+go
+create TRIGGER QuantityUpdate ON OrderProducts after INSERT
 as
 	declare @quantity int
 	declare @Product_code varchar(20)
-	select @quantity = Detailed_Quantity_1,@Product_code = Product_code from inserted
-	UPDATE Product
-	SET Product.Quantity = Product.Quantity - @quantity
-	WHERE Product.Product_code = @Product_code
+	select @quantity = TotalProductQuantity,@Product_code = ItemsID from inserted
+	UPDATE Items
+	SET Items.ItemsQuantity = Items.ItemsQuantity - @quantity
+	WHERE Items.ItemsID = @Product_code
+go

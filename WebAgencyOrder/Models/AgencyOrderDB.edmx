@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Functional_FoodsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Functional_FoodsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Agency">
           <Key>
             <PropertyRef Name="AgentID" />
@@ -56,14 +56,14 @@
           </Key>
           <Property Name="TotalProductQuantity" Type="int" Nullable="false" />
           <Property Name="TotalProductPrice" Type="float" Nullable="false" />
-          <Property Name="OrderID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ItemsID" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderReceipt">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="OrderID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TotalOrderPrice" Type="float" Nullable="false" />
           <Property Name="TotalOrderQuantity" Type="int" Nullable="false" />
           <Property Name="OrderedDate" Type="date" Nullable="false" />
@@ -106,7 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Items__412EB0B6">
+        <Association Name="FK__OrderProd__Items__6B24EA82">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="OrderProducts" Type="Self.OrderProducts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +118,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Order__403A8C7D">
+        <Association Name="FK__OrderProd__Order__6A30C649">
           <End Role="OrderReceipt" Type="Self.OrderReceipt" Multiplicity="1" />
           <End Role="OrderProducts" Type="Self.OrderProducts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderRece__Agent__3B75D760">
+        <Association Name="FK__OrderRece__Agent__6754599E">
           <End Role="Agency" Type="Self.Agency" Multiplicity="1" />
           <End Role="OrderReceipt" Type="Self.OrderReceipt" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,21 +162,20 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="ImportedItems" EntitySet="ImportedItems" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Items__412EB0B6" Association="Self.FK__OrderProd__Items__412EB0B6">
+          <AssociationSet Name="FK__OrderProd__Items__6B24EA82" Association="Self.FK__OrderProd__Items__6B24EA82">
             <End Role="Items" EntitySet="Items" />
             <End Role="OrderProducts" EntitySet="OrderProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Order__403A8C7D" Association="Self.FK__OrderProd__Order__403A8C7D">
+          <AssociationSet Name="FK__OrderProd__Order__6A30C649" Association="Self.FK__OrderProd__Order__6A30C649">
             <End Role="OrderReceipt" EntitySet="OrderReceipt" />
             <End Role="OrderProducts" EntitySet="OrderProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderRece__Agent__3B75D760" Association="Self.FK__OrderRece__Agent__3B75D760">
+          <AssociationSet Name="FK__OrderRece__Agent__6754599E" Association="Self.FK__OrderRece__Agent__6754599E">
             <End Role="Agency" EntitySet="Agency" />
             <End Role="OrderReceipt" EntitySet="OrderReceipt" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Functional_FoodsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -186,7 +185,7 @@
           </Key>
           <Property Name="AgentID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AgentName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="OrderReceipts" Relationship="Self.FK__OrderRece__Agent__3B75D760" FromRole="Agency" ToRole="OrderReceipt" />
+          <NavigationProperty Name="OrderReceipts" Relationship="Functional_FoodsModel.FK__OrderRece__Agent__6754599E" FromRole="Agency" ToRole="OrderReceipt" />
         </EntityType>
         <EntityType Name="Goods_Received_Note">
           <Key>
@@ -222,7 +221,7 @@
           <Property Name="ItemsQuantity" Type="Int32" Nullable="false" />
           <Property Name="Benefit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ImportedItems" Relationship="Self.FK__ImportedI__Items__47DBAE45" FromRole="Items" ToRole="ImportedItems" />
-          <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__Items__412EB0B6" FromRole="Items" ToRole="OrderProducts" />
+          <NavigationProperty Name="OrderProducts" Relationship="Functional_FoodsModel.FK__OrderProd__Items__6B24EA82" FromRole="Item" ToRole="OrderProduct" />
         </EntityType>
         <EntityType Name="Manager">
           <Key>
@@ -232,43 +231,6 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Goods_Received_Note" Relationship="Self.FK__Goods_Rec__Manag__440B1D61" FromRole="Manager" ToRole="Goods_Received_Note" />
         </EntityType>
-        <EntityType Name="OrderProduct">
-          <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ItemsID" />
-          </Key>
-          <Property Name="TotalProductQuantity" Type="Int32" Nullable="false" />
-          <Property Name="TotalProductPrice" Type="Double" Nullable="false" />
-          <Property Name="OrderID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ItemsID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Item" Relationship="Self.FK__OrderProd__Items__412EB0B6" FromRole="OrderProducts" ToRole="Items" />
-          <NavigationProperty Name="OrderReceipt" Relationship="Self.FK__OrderProd__Order__403A8C7D" FromRole="OrderProducts" ToRole="OrderReceipt" />
-        </EntityType>
-        <EntityType Name="OrderReceipt">
-          <Key>
-            <PropertyRef Name="OrderID" />
-          </Key>
-          <Property Name="OrderID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TotalOrderPrice" Type="Double" Nullable="false" />
-          <Property Name="TotalOrderQuantity" Type="Int32" Nullable="false" />
-          <Property Name="OrderedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AgentID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Agency" Relationship="Self.FK__OrderRece__Agent__3B75D760" FromRole="OrderReceipt" ToRole="Agency" />
-          <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__Order__403A8C7D" FromRole="OrderReceipt" ToRole="OrderProducts" />
-        </EntityType>
-        <Association Name="FK__OrderRece__Agent__3B75D760">
-          <End Role="Agency" Type="Self.Agency" Multiplicity="1" />
-          <End Role="OrderReceipt" Type="Self.OrderReceipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Agency">
-              <PropertyRef Name="AgentID" />
-            </Principal>
-            <Dependent Role="OrderReceipt">
-              <PropertyRef Name="AgentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Goods_Rec__Manag__440B1D61">
           <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
           <End Role="Goods_Received_Note" Type="Self.Goods_Received_Note" Multiplicity="*" />
@@ -305,42 +267,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Items__412EB0B6">
-          <End Role="Items" Type="Self.Item" Multiplicity="1" />
-          <End Role="OrderProducts" Type="Self.OrderProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="ItemsID" />
-            </Principal>
-            <Dependent Role="OrderProducts">
-              <PropertyRef Name="ItemsID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__OrderProd__Order__403A8C7D">
-          <End Role="OrderReceipt" Type="Self.OrderReceipt" Multiplicity="1" />
-          <End Role="OrderProducts" Type="Self.OrderProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrderReceipt">
-              <PropertyRef Name="OrderID" />
-            </Principal>
-            <Dependent Role="OrderProducts">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DevConn" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agencies" EntityType="Self.Agency" />
           <EntitySet Name="Goods_Received_Note" EntityType="Self.Goods_Received_Note" />
           <EntitySet Name="ImportedItems" EntityType="Self.ImportedItem" />
           <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="Managers" EntityType="Self.Manager" />
-          <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
-          <EntitySet Name="OrderReceipts" EntityType="Self.OrderReceipt" />
-          <AssociationSet Name="FK__OrderRece__Agent__3B75D760" Association="Self.FK__OrderRece__Agent__3B75D760">
-            <End Role="Agency" EntitySet="Agencies" />
-            <End Role="OrderReceipt" EntitySet="OrderReceipts" />
-          </AssociationSet>
           <AssociationSet Name="FK__Goods_Rec__Manag__440B1D61" Association="Self.FK__Goods_Rec__Manag__440B1D61">
             <End Role="Manager" EntitySet="Managers" />
             <End Role="Goods_Received_Note" EntitySet="Goods_Received_Note" />
@@ -353,15 +285,82 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="ImportedItems" EntitySet="ImportedItems" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Items__412EB0B6" Association="Self.FK__OrderProd__Items__412EB0B6">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="OrderProducts" EntitySet="OrderProducts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Order__403A8C7D" Association="Self.FK__OrderProd__Order__403A8C7D">
+          <EntitySet Name="OrderProducts" EntityType="Functional_FoodsModel.OrderProduct" />
+          <EntitySet Name="OrderReceipts" EntityType="Functional_FoodsModel.OrderReceipt" />
+          <AssociationSet Name="FK__OrderRece__Agent__6754599E" Association="Functional_FoodsModel.FK__OrderRece__Agent__6754599E">
+            <End Role="Agency" EntitySet="Agencies" />
             <End Role="OrderReceipt" EntitySet="OrderReceipts" />
-            <End Role="OrderProducts" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Items__6B24EA82" Association="Functional_FoodsModel.FK__OrderProd__Items__6B24EA82">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Order__6A30C649" Association="Functional_FoodsModel.FK__OrderProd__Order__6A30C649">
+            <End Role="OrderReceipt" EntitySet="OrderReceipts" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ItemsID" />
+          </Key>
+          <Property Name="TotalProductQuantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalProductPrice" Type="Double" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ItemsID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Item" Relationship="Functional_FoodsModel.FK__OrderProd__Items__6B24EA82" FromRole="OrderProduct" ToRole="Item" />
+          <NavigationProperty Name="OrderReceipt" Relationship="Functional_FoodsModel.FK__OrderProd__Order__6A30C649" FromRole="OrderProduct" ToRole="OrderReceipt" />
+        </EntityType>
+        <EntityType Name="OrderReceipt">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalOrderPrice" Type="Double" Nullable="false" />
+          <Property Name="TotalOrderQuantity" Type="Int32" Nullable="false" />
+          <Property Name="OrderedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AgentID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agency" Relationship="Functional_FoodsModel.FK__OrderRece__Agent__6754599E" FromRole="OrderReceipt" ToRole="Agency" />
+          <NavigationProperty Name="OrderProducts" Relationship="Functional_FoodsModel.FK__OrderProd__Order__6A30C649" FromRole="OrderReceipt" ToRole="OrderProduct" />
+        </EntityType>
+        <Association Name="FK__OrderRece__Agent__6754599E">
+          <End Type="Functional_FoodsModel.Agency" Role="Agency" Multiplicity="1" />
+          <End Type="Functional_FoodsModel.OrderReceipt" Role="OrderReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agency">
+              <PropertyRef Name="AgentID" />
+            </Principal>
+            <Dependent Role="OrderReceipt">
+              <PropertyRef Name="AgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderProd__Items__6B24EA82">
+          <End Type="Functional_FoodsModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="Functional_FoodsModel.OrderProduct" Role="OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemsID" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ItemsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderProd__Order__6A30C649">
+          <End Type="Functional_FoodsModel.OrderReceipt" Role="OrderReceipt" Multiplicity="1" />
+          <End Type="Functional_FoodsModel.OrderProduct" Role="OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderReceipt">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -419,22 +418,22 @@
           <EntitySetMapping Name="OrderProducts">
             <EntityTypeMapping TypeName="Functional_FoodsModel.OrderProduct">
               <MappingFragment StoreEntitySet="OrderProducts">
-                <ScalarProperty Name="TotalProductQuantity" ColumnName="TotalProductQuantity" />
-                <ScalarProperty Name="TotalProductPrice" ColumnName="TotalProductPrice" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ItemsID" ColumnName="ItemsID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="TotalProductPrice" ColumnName="TotalProductPrice" />
+                <ScalarProperty Name="TotalProductQuantity" ColumnName="TotalProductQuantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderReceipts">
             <EntityTypeMapping TypeName="Functional_FoodsModel.OrderReceipt">
               <MappingFragment StoreEntitySet="OrderReceipt">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="TotalOrderPrice" ColumnName="TotalOrderPrice" />
-                <ScalarProperty Name="TotalOrderQuantity" ColumnName="TotalOrderQuantity" />
-                <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
+                <ScalarProperty Name="TotalOrderQuantity" ColumnName="TotalOrderQuantity" />
+                <ScalarProperty Name="TotalOrderPrice" ColumnName="TotalOrderPrice" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

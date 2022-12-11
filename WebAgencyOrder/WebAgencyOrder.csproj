@@ -230,6 +230,9 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\Layout.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Order.cshtml" />
+    <Content Include="Views\ShoppingCart\PickAgent.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

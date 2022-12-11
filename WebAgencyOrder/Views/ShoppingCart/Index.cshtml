@@ -6,68 +6,59 @@
 <h2>Cart</h2>
 @if (Session["Cart"] == null)
 {
-    <h2>Your cart has nothing!</h2>      
+    <h2>Your cart has nothing!</h2>
 }
 
 else
 {
     using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
     {
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var cart in (List<Cart>)Session["Cart"])
-        {
-            <tr>
-                <td>@cart.Product.ItemsID</td>
-                <td>@cart.Product.ItemsName</td>
-                <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @cart.Product.ItemsPrice) đ</td>
-                <td>
-                    <input onkeypress="return validNumber(event)" type="text" name="quantity" id="quantity" value="@cart.Quantity" />
-                    &nbsp;<span class="text-danger" id="errmg"></span>
-                </td>
-                <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @cart.Product.ItemsPrice * cart.Quantity) đ</td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = cart.Product.ItemsID }, new
-           {
-               @class = "btn btn-danger",
-               onclick = "return confirm('You sure to delete this item?');"
-           })
-                </td>
-            </tr>
-        }
-        <tr>
-            <td colspan="4"><b> Total: </b></td>
-            <td>
-                @{
-                    List<Cart> tmp = (List<Cart>)Session["Cart"];
-                    var total = String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", tmp.Sum(x => x.Quantity * x.Product.ItemsPrice));
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cart in (List<Cart>)Session["Cart"])
+                {
+                    <tr>
+                        <td>@cart.Product.ItemsID</td>
+                        <td>@cart.Product.ItemsName</td>
+                        <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @cart.Product.ItemsPrice) đ</td>
+                        <td>
+                            <input onkeypress="return validNumber(event)" type="text" name="quantity" id="quantity" value="@cart.Quantity" />
+                            &nbsp;<span class="text-danger" id="errmg"></span>
+                        </td>
+                        <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @cart.Product.ItemsPrice * cart.Quantity) đ</td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = cart.Product.ItemsID }, new
+                   {
+                       @class = "btn btn-danger",
+                       onclick = "return confirm('You sure to delete this item?');"
+                   })
+                        </td>
+                    </tr>
                 }
-                <b>@total đ</b>
-            </td>
-        </tr>
-    </tbody>
-
-    <div class="form-group">
-        <label for="agency">Agent</label>
-        @Html.DropDownList("AgentName", new SelectList(ViewBag.Agencies, "AgentID", "AgentName"), new { @class = "form-control", id = "agency" })
-    </div>
-</table>
-        <br/><input class="btn btn-warning" type="submit" value="Update Cart"/>
-        <div>
-            <h3>Payments</h3>
-            @Html.ActionLink("Cash", "OrderNow", "ShoppingCart", new { @class = "btn btn-primary" })
-            @Html.ActionLink("Momo", "OrderNow", "ShoppingCart", new { @class = "btn btn-success" })
-            @Html.ActionLink("Transfer", "OrderNow", "ShoppingCart", new { @class = "btn btn-info" })
-        </div>
+                <tr>
+                    <td colspan="4"><b> Total: </b></td>
+                    <td>
+                        @{
+                            List<Cart> tmp = (List<Cart>)Session["Cart"];
+                            var total = String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", tmp.Sum(x => x.Quantity * x.Product.ItemsPrice));
+                        }
+                        <b>@total đ</b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <input class="btn btn-success" type="submit" value="Update Cart" />
+        @Html.ActionLink("Payment", "PickAgent", "ShoppingCart", new { @class = "btn btn-primary" })
     }
 }
 

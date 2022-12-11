@@ -31,10 +31,5 @@ namespace WebAgencyOrder.Models
         public virtual ICollection<ImportedItem> ImportedItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
-
-        internal Item Find(string id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

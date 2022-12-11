@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PickAgent";
+}
+
+<h3>Pick an agent to save to order receipt</h3>
+@using (Html.BeginForm("Payment", "ShoppingCart", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="agency">Agent</label>
+        @Html.DropDownList("AgentName", new SelectList(ViewBag.Agencies, "AgentID", "AgentName"), new { @class = "form-control", id = "agency" })
+    </div>
+    <input class="btn btn-success" type="submit" value="Cash" />
+}
+

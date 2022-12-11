@@ -15,8 +15,6 @@ namespace WebAgencyOrder.Models
     
     public partial class DevConn : DbContext
     {
-        internal Item items;
-
         public DevConn()
             : base("name=DevConn")
         {
@@ -34,6 +32,5 @@ namespace WebAgencyOrder.Models
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<OrderProduct> OrderProducts { get; set; }
         public virtual DbSet<OrderReceipt> OrderReceipts { get; set; }
-        public object Agencyies { get; internal set; }
     }
 }

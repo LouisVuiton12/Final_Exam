@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebAgencyOrder.Models.OrderProduct>
+@{
+    ViewBag.Title = "OrderDetail";
+}
+
+<h2>Order Detail</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">ProductID</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Total Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderID</td>
+                <td>@item.ItemsID</td>
+                <td>@item.TotalProductPrice</td>
+                <td>@item.TotalProductQuantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -20,7 +20,7 @@ namespace WebAgencyOrder.Models
             this.OrderProducts = new HashSet<OrderProduct>();
         }
     
-        public string OrderID { get; set; }
+        public int OrderID { get; set; }
         public double TotalOrderPrice { get; set; }
         public int TotalOrderQuantity { get; set; }
         public System.DateTime OrderedDate { get; set; }

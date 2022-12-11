@@ -88,5 +88,68 @@ namespace WebAgencyOrder.Controllers
             Session["Cart"] = listCart;
             return RedirectToAction("Index");
         }
+
+        public ActionResult PickAgent()
+        {
+            var agent = db.Agencies.ToList();
+            ViewBag.Agencies = agent;
+            return View();
+        }
+        public ActionResult Payment(FormCollection frc)
+        {
+            List<Cart> listCart = (List<Cart>)Session["Cart"];
+            int sumTotalPrice = (int)listCart.Sum(s => s.Quantity * s.Product.ItemsPrice);
+            int sumTotalQuantity = listCart.Sum(s => s.Quantity);
+
+            int totalPrice = sumTotalPrice;
+            int totalQuantity = sumTotalQuantity;
+            DateTime date = DateTime.Now;
+            String agentID = frc["AgentName"];
+
+            OrderReceipt orderReceipt = new OrderReceipt()
+            {
+                TotalOrderPrice = totalPrice,
+                TotalOrderQuantity = totalQuantity,
+                OrderedDate = date,
+                Status = "Timming",
+                AgentID = agentID,
+
+            };
+
+            db.OrderReceipts.Add(orderReceipt);
+            db.SaveChanges();
+
+            int length = listCart.Count;
+            for(int i = 0; i < length; i++)
+            {
+                OrderProduct orderPro = new OrderProduct()
+                {
+                    OrderID = orderReceipt.OrderID,
+                    ItemsID = listCart[i].Product.ItemsID,
+                    TotalProductQuantity = listCart[i].Quantity,
+                    TotalProductPrice = listCart[i].Product.ItemsPrice* listCart[i].Quantity,
+
+                };db.OrderProducts.Add(orderPro); db.SaveChanges();
+            }
+            Session.Remove("Cart");
+
+            return RedirectToAction("Order");
+        }
+
+        public ActionResult Order()
+        {
+            var order = db.OrderReceipts.ToList();
+            ViewBag.Agencies = db.Agencies.ToList();
+            return View(order);
+        }
+
+        public ActionResult OrderDetail(int id)
+        {
+            var detail = db.OrderProducts.Where(i => i.OrderID == id);
+            var orderDetail = detail.ToList();
+            return View(orderDetail);
+        }
+
+
     }
 }

@@ -16,7 +16,7 @@ namespace WebAgencyOrder.Models
     {
         public int TotalProductQuantity { get; set; }
         public double TotalProductPrice { get; set; }
-        public string OrderID { get; set; }
+        public int OrderID { get; set; }
         public string ItemsID { get; set; }
     
         public virtual Item Item { get; set; }
