@@ -48,7 +48,7 @@ CREATE TABLE OrderProducts
   FOREIGN KEY (OrderID) REFERENCES OrderReceipt(OrderID),
   FOREIGN KEY (ItemsID) REFERENCES Items(ItemsID)
 );
-DROP TABLE OrderProducts
+
 
 CREATE TABLE Goods_Received_Note
 (
