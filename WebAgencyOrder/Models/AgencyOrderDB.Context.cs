@@ -12,6 +12,8 @@ namespace WebAgencyOrder.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DevConn : DbContext
     {
@@ -32,5 +34,30 @@ namespace WebAgencyOrder.Models
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<OrderProduct> OrderProducts { get; set; }
         public virtual DbSet<OrderReceipt> OrderReceipts { get; set; }
+    
+        public virtual int procItems(string itemsID, string itemsName, Nullable<double> itemsPrice, Nullable<int> itemsQuantity, string benefit)
+        {
+            var itemsIDParameter = itemsID != null ?
+                new ObjectParameter("itemsID", itemsID) :
+                new ObjectParameter("itemsID", typeof(string));
+    
+            var itemsNameParameter = itemsName != null ?
+                new ObjectParameter("itemsName", itemsName) :
+                new ObjectParameter("itemsName", typeof(string));
+    
+            var itemsPriceParameter = itemsPrice.HasValue ?
+                new ObjectParameter("itemsPrice", itemsPrice) :
+                new ObjectParameter("itemsPrice", typeof(double));
+    
+            var itemsQuantityParameter = itemsQuantity.HasValue ?
+                new ObjectParameter("itemsQuantity", itemsQuantity) :
+                new ObjectParameter("itemsQuantity", typeof(int));
+    
+            var benefitParameter = benefit != null ?
+                new ObjectParameter("benefit", benefit) :
+                new ObjectParameter("benefit", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procItems", itemsIDParameter, itemsNameParameter, itemsPriceParameter, itemsQuantityParameter, benefitParameter);
+        }
     }
 }

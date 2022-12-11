@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final_exam_ver2", "Final_ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAgencyOrder", "WebAgencyOrder\WebAgencyOrder.csproj", "{8413B23E-7E76-4E01-8CDC-0B97829090F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodsDeliveryNote", "GoodsDeliveryNote\GoodsDeliveryNote.csproj", "{B93E91A8-FEA0-43E3-81DD-06FBAAE5BEA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8413B23E-7E76-4E01-8CDC-0B97829090F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8413B23E-7E76-4E01-8CDC-0B97829090F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8413B23E-7E76-4E01-8CDC-0B97829090F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93E91A8-FEA0-43E3-81DD-06FBAAE5BEA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93E91A8-FEA0-43E3-81DD-06FBAAE5BEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93E91A8-FEA0-43E3-81DD-06FBAAE5BEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93E91A8-FEA0-43E3-81DD-06FBAAE5BEA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

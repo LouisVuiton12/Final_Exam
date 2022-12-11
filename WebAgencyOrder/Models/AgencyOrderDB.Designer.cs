@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\ADMIN\Source\Repos\LouisVuiton12\Final_Exam\WebAgencyOrder\Models\AgencyOrderDB.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Công nghệ phần mềm\Final_Exam\Final_Exam\WebAgencyOrder\Models\AgencyOrderDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

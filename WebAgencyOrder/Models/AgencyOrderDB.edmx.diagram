@@ -5,19 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0b59a6cd6f6c4ee384e34a089ea4562d" Name="Diagram1">
-        <EntityTypeShape EntityType="Functional_FoodsModel.Agency" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Functional_FoodsModel.Goods_Received_Note" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="Functional_FoodsModel.ImportedItem" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Functional_FoodsModel.Item" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Functional_FoodsModel.Manager" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
-        <AssociationConnector Association="Functional_FoodsModel.FK__Goods_Rec__Manag__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="Functional_FoodsModel.FK__ImportedI__Invoi__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="Functional_FoodsModel.FK__ImportedI__Items__47DBAE45" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Functional_FoodsModel.OrderProduct" Width="1.5" PointX="5.25" PointY="2" />
-        <EntityTypeShape EntityType="Functional_FoodsModel.OrderReceipt" Width="1.5" PointX="3" PointY="0.875" />
-        <AssociationConnector Association="Functional_FoodsModel.FK__OrderRece__Agent__6754599E" />
-        <AssociationConnector Association="Functional_FoodsModel.FK__OrderProd__Items__6B24EA82" />
-        <AssociationConnector Association="Functional_FoodsModel.FK__OrderProd__Order__6A30C649" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.Agency" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.Goods_Received_Note" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.ImportedItem" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.Item" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.Manager" Width="1.5" PointX="0.75" PointY="9.375" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.OrderProduct" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Functional_FoodsModel.OrderReceipt" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="Functional_FoodsModel.FK__OrderRece__Agent__4BAC3F29" />
+        <AssociationConnector Association="Functional_FoodsModel.FK__Goods_Rec__Manag__36B12243" />
+        <AssociationConnector Association="Functional_FoodsModel.FK__ImportedI__Invoi__3A81B327" />
+        <AssociationConnector Association="Functional_FoodsModel.FK__ImportedI__Items__3B75D760" />
+        <AssociationConnector Association="Functional_FoodsModel.FK__OrderProd__Items__4F7CD00D" />
+        <AssociationConnector Association="Functional_FoodsModel.FK__OrderProd__Order__4E88ABD4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
