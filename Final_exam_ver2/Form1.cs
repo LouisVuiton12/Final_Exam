@@ -38,7 +38,8 @@ namespace Final_exam_ver2
 
         private void btnAdd_Item_Click(object sender, EventArgs e)
         {
-            if(txtItemID.Text == "")
+            int parsedValue;
+            if (txtItemID.Text == "")
             {
                 MessageBox.Show("Please enter your ID's Item");
             }
@@ -54,6 +55,17 @@ namespace Final_exam_ver2
             {
                 MessageBox.Show("Please enter your Quantity's Item");
             }
+            
+            else if (!int.TryParse(txtQuantityItem.Text, out parsedValue))
+            {
+                MessageBox.Show("Quantity must be a number");
+            }
+
+            else if (!int.TryParse(txtPriceItem.Text, out parsedValue))
+            {
+                MessageBox.Show("Price must be a number");
+            }
+
             else if (txtBenefit.Text == "")
             {
                 MessageBox.Show("Please enter your Benefit's Item");
