@@ -35,6 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.search = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBenefit = new System.Windows.Forms.TextBox();
@@ -57,8 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtItemID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.search = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItem)).BeginInit();
@@ -88,6 +88,7 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Checker Information";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // managerID
             // 
@@ -154,6 +155,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Information about items";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // search
+            // 
+            this.search.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.search.BackColor = System.Drawing.Color.Red;
+            this.search.Location = new System.Drawing.Point(677, 282);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(106, 34);
+            this.search.TabIndex = 21;
+            this.search.Text = "Search Item";
+            this.search.UseVisualStyleBackColor = false;
+            this.search.Click += new System.EventHandler(this.search_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(456, 288);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(215, 22);
+            this.txtSearch.TabIndex = 21;
             // 
             // label10
             // 
@@ -359,25 +379,6 @@
             this.label4.Size = new System.Drawing.Size(48, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Item ID";
-            // 
-            // search
-            // 
-            this.search.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.search.BackColor = System.Drawing.Color.Red;
-            this.search.Location = new System.Drawing.Point(677, 282);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(106, 34);
-            this.search.TabIndex = 21;
-            this.search.Text = "Search Item";
-            this.search.UseVisualStyleBackColor = false;
-            this.search.Click += new System.EventHandler(this.search_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(456, 288);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(215, 22);
-            this.txtSearch.TabIndex = 21;
             // 
             // Form1
             // 

@@ -109,9 +109,6 @@ INSERT INTO Agency VALUES ('A005', 'Fifth Boss');
 INSERT INTO Agency VALUES ('A006', 'Sixth Boss'); 
 INSERT INTO Agency VALUES ('A007', 'Seventh Boss');
 
-
-DBCC CHECKIDENT (Goods_Received_Note, RESEED, 0)
-
 CREATE PROC procItems
 (
 	@itemsID VARCHAR(30),
@@ -146,9 +143,5 @@ as
 	SET Items.ItemsQuantity = Items.ItemsQuantity - @quantity
 	WHERE Items.ItemsID = @Product_code
 go
-
-SELECT MONTH(OrderedDate) AS OrderedMonth, SUM(TotalOrderPrice) AS Revenue 
-		FROM OrderReceipt
-		GROUP BY MONTH(OrderedDate)
 
 

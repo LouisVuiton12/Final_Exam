@@ -298,5 +298,10 @@ namespace Final_exam_ver2
                 MessageBox.Show(exc.Message);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
