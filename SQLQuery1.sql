@@ -146,3 +146,9 @@ as
 	SET Items.ItemsQuantity = Items.ItemsQuantity - @quantity
 	WHERE Items.ItemsID = @Product_code
 go
+
+SELECT MONTH(OrderedDate) AS OrderedMonth, SUM(TotalOrderPrice) AS Revenue 
+		FROM OrderReceipt
+		GROUP BY MONTH(OrderedDate)
+
+

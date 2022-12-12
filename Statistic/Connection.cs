@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Final_exam_ver2
+namespace Statistic
 {
     public class Connection
     {
